@@ -1,0 +1,18 @@
+[global]
+	format = "<b>%s</b>\n%b"
+//	format = "<b><i>%a:</i>\n%s</b>\n%b"
+    origin = top-center
+ 	notification_limit = 5
+    timeout = 5
+    icon_position = left
+    max_icon_size = 48
+    frame_width = 2
+	frame_color = "#d08770"
+    font = "JetBrainsMono Nerd Font Mono 14"
+    gap_size = 1
+    background = "#1f2531"
+    foreground = "#C5C5C6"
+    offset = (0, 4)
+    corner_radius = 16
+//    transparency = 5
+    show_indicators = false

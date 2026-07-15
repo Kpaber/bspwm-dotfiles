@@ -1,0 +1,93 @@
+#
+#остатки которые жалко удалять, вдруг пригодятся
+#
+
+#super + ctrl + n
+#	dunstctl set-paused toggle
+
+super + {shift + k, k}
+	xinput set-prop 10 "libinput Disable While Typing Enabled" {0, 1} 
+
+#
+#Запуск приложений
+#
+
+super + Return
+	alacritty
+
+super + d
+	rofi -show drun -theme .config/rofi/themes/newtheme.rasi
+
+super + shift + s
+	flameshot gui
+
+super + {p, b, c, v, x, f, w, l, m}
+	{power.sh, firefox, qalculate, pavucontrol, xfce4-power-manager-settings, thunar, nitrogen, i3lock-fancy, arandr}
+	
+#
+#Управление системой
+#
+
+XF86AudioRaiseVolume
+	pamixer --allow-boost --set-limit 150 -i 10
+
+XF86AudioLowerVolume
+	pamixer --allow-boost -d 10
+
+XF86AudioMute
+	pamixer -t
+
+XF86MonBrightnessUp
+	brightnessctl s 10%+
+
+XF86MonBrightnessDown
+	brightnessctl s 10%-
+
+#ctrl + alt + {s, b, p}
+#	powerprofilesctl set {power-saver, balanced, performance }
+
+#super + ctrl + {p,s,h,r}
+#	systemctl {poweroff, suspend, hibernate, reboot}
+
+#
+#Управление bspwm
+#
+
+super + alt + {q,r}
+	bspc {quit,wm -r} #перезагрузить выйти
+
+alt + {t,s, f}
+	bspc node -t {tiled,floating,fullscreen}
+
+super + {_, shift} + q
+	bspc node -{c,k} #закрыть убить
+
+super + Escape
+	pkill -USR1 -x sxhkd #перезагрузить хоткеи
+	
+#
+#Управление окнами
+#
+
+super + {_, shift +} + {_,ctrl +} + {1-9,0}
+	bspc {desktop -f,node -d} {eDP-1:,HDMI-1:}'^{1-9,10}' 
+
+#super + {_, shift +} + {1-9,0}
+#	bspc {desktop -f,node -d} '^{1-9,10}' 
+	
+super {_, shift +} {Left,Up,Right,Down}
+	bspc node {-f,-s} {west,north,east,south}
+
+super + ctrl + {Left,Up,Right,Down}
+	bspc node -z {left -100 0,top 0 -100,right 100 0,bottom 0 100}
+
+super + alt + {Left,Up,Right,Down}
+	bspc node -z {right -100 0,bottom 0 -100,left 100 0,top 0 100}
+
+ctrl + alt + {Left,Up,Right,Down}
+	bspc node -p {west,north,east,south}
+
+#alt + Tab
+#	bspc node -f older
+#alt + {Left,Up,Right,Down}
+#	bspc node -v {-100 0, 0 -100, 100 0, 0 100}

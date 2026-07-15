@@ -1,0 +1,98 @@
+#
+# Мои хоткеи
+#
+
+super + alt + {b,n,v}
+	{blueman-manager,nm-connection-editor, pavucontrol}
+	
+
+super + alt + {s,o,p,h}
+        systemctl {suspend, reboot, poweroff, hibernate}
+
+super + shift + s
+	flameshot gui
+
+super + {b, t, v, a, f, l, d}
+	{firefox-esr, telegram, code, AmneziaVPN, thunar, libreoffice, discord}
+
+
+# Управление звуком
+XF86AudioRaiseVolume
+	pamixer --allow-boost --set-limit 150 -i 10
+
+XF86AudioLowerVolume
+        pamixer --allow-boost -d 10
+
+XF86AudioMute
+        pamixer -t
+
+# Управление яркостью
+XF86MonBrightnessUp
+	brightnessctl s 10%+
+XF86MonBrightnessDown
+        brightnessctl s 10%-
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + space
+	rofi -show drun
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + shift + q
+	bspc node -c
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+#super + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+#super + g
+#	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + alt + {t,shift + t,f,s}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift +, ctrl + }{Left,Down,Up,Right}
+	bspc node -{f,s,p} {west,south,north,east}
+
+super + {shift,_} + {_, ctrl }{1-9,0}
+	bspc {node -d, desktop -f} {eDP-1:, HDMI-1:}^{1-9,10} --follow
+
+super + alt + l
+	i3lock-fancy
