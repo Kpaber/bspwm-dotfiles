@@ -1,0 +1,98 @@
+/*Переменные, аля цвета */
+
+configuration {
+//    modi: "power-menu:rofi-power-menu";
+    show-icons: true;
+//    display-power-menu: "";
+//    sidebar-mode: false;
+}
+	
+*{
+	bg : #1f2531;
+	txt : #C5C5C6;
+//	main : #334f7d;
+	font: "JetBrains NerdFont Mono 16";
+	bg-alt: #2e3440;
+	main : #d08770;
+}
+
+window {
+	//height: 64%;
+	width: 28%;
+	//border-radius: 16px;
+	//border: 4px;
+	//border-color: @bg-alt;
+	background-color: @bg;
+	padding: 16px;
+}
+
+mainbox {	
+	children: [listview, inputbar];
+	background-color: @bg;
+	spacing: 16px;
+//	border: 4px;
+//	border-color: @bg-alt;
+//	border-radius: 16px;
+}
+
+inputbar {
+    children: [ entry];
+//	background-color: @bg-alt;
+//	height: 100px;
+//	width: 50px;
+	border: 8px;
+	border-color: @bg-alt;
+	border-radius: 16px;
+}
+
+entry{
+//	expand: false;
+	placeholder: "command..";
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	//height: 30px;
+	background-color: @bg-alt;
+	text-color: @txt;
+//	text-radius: 16px;
+}
+
+listview{
+	children: [element-icon, element];
+//	padding: 20px;
+	lines: 7;
+	//columns: ;
+	background-color: @bg;
+	spacing: 8px;
+//	layout: vertical;
+}
+
+element{
+	background-color: @bg;
+	border-radius: 16px;
+	border: 4px;
+}
+
+element selected{
+	background-color: @main;
+	border-color: @main;
+}
+
+element-text{
+	text-color: @txt;
+	background-color: @bg;
+}
+
+element-text selected{
+	background-color: @main;
+	text-color: @bg;
+}
+
+element-icon{
+	size: 48;
+	background-color: @bg;
+	//spacing: 20px;
+}
+
+element-icon selected{
+	background-color: @main;
+}
